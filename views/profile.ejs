@@ -20,6 +20,26 @@
         <h1>Profile</h1>
         <hr>
         <h2>Welcome! You're logged in as <%= user.email %>.</h2>
+        <hr>
+        <h4>Add a new ship</h4>
+        <form action="/new-ship" method="POST">
+          <label for="newShipName"> New Ship Name:
+            <input type="text" name="shipName" id="newShipName">
+          </label>
+          <br>
+          <label for="newShipSize"> New Ship Size:
+            <input type="text" name="shipSize" id="newShipSize">
+          </label>
+          <input type="submit" name="submitBtn">
+        </form>
+        <h4>Existing ships</h4>
+        <% if (user.pirateShips) { %>
+          <ul>
+            <% for(var i = 0; i < user.pirateShips.length; i++){ %>
+              <li><%= user.pirateShips[i].name %></li>
+            <% } %>
+          </ul>
+        <% } %>
       </div>
     </div>
   </div>

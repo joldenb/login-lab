@@ -1,11 +1,14 @@
 var mongoose = require('mongoose'),
-bcrypt = require('bcrypt');
+bcrypt = require('bcrypt'),
+PirateShip = require('./pirate-ship');
+var pirateShipSchema = mongoose.model('PirateShip').schema;
 
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
 	email: String,
-	passwordDigest : String
+	passwordDigest : String,
+	pirateShips : [pirateShipSchema]
 })
 
 UserSchema.statics.createSecure = function(email, password, callback){
